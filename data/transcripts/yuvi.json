@@ -1,0 +1,37 @@
+[
+    {
+        "question": "Write a formula to calculate the sum of the values in cells A1 through A10.",
+        "answer": "=SUM(A1:A2)",
+        "score": 0,
+        "feedback": "Error parsing evaluator response.",
+        "solution": "N/A"
+    },
+    {
+        "question": "Write a formula to calculate the average of the values in the Sales column.",
+        "answer": "=AVERAGE(B:B)",
+        "score": 0,
+        "feedback": "Error parsing evaluator response.",
+        "solution": "N/A"
+    },
+    {
+        "question": "Calculate the maximum value in the Sales column.",
+        "answer": "0",
+        "score": 0,
+        "feedback": "Error parsing evaluator response.",
+        "solution": "N/A"
+    },
+    {
+        "question": "Calculate the minimum value in the Sales column.",
+        "answer": "90",
+        "score": 0,
+        "feedback": "Error parsing evaluator response.",
+        "solution": "N/A"
+    },
+    {
+        "question": "Write a formula to count how many numerical values are in the Sales column.",
+        "answer": "5",
+        "score": 0,
+        "feedback": "Error parsing evaluator response.",
+        "solution": "N/A"
+    }
+]
