@@ -1,81 +1,155 @@
-# 🚀 Setup & Usage Guide – Excel Mock Interviewer
 
-This guide explains step-by-step how to set up and run the project.  
-No prior AI knowledge is required — just basic Python skills.
+# 📊 Excel Mock Interviewer - Usage Guide
+
+This document explains how to set up, run, and use the **Excel Mock Interviewer** project built with **Agentic AI** using **LangGraph** and **LLM models**.
 
 ---
 
-## 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/your-username/excel-mock-interviewer.git
-cd excel-mock-interviewer
-2️⃣ Setup Virtual Environment
-It’s best to run in a virtual environment.
+## 1. Prerequisites
 
-For Windows:
+Before running the project, make sure you have:
+
+1. **Python 3.10+** installed.
+2. **Git** installed to clone the repository.
+3. A **Groq API key** for accessing the LLM.
+4. Basic knowledge of running commands in a terminal.
+5. ---
+
+## 2. Clone the Repository
+
+Open your terminal or command prompt and run:
+
 bash
-Copy code
+git clone https://github.com/<your-username>/excel-mock-interviewer.git
+cd excel-mock-interviewer
+Replace <your-username> with your GitHub username.
+
+3. Set Up a Virtual Environment
+
+Create a Python virtual environment to manage dependencies:
+
 python -m venv venv
+
+
+Activate the virtual environment:
+
+Windows:
+
 venv\Scripts\activate
-For Mac/Linux:
-bash
-Copy code
-python3 -m venv venv
+
+
+Mac/Linux:
+
 source venv/bin/activate
-3️⃣ Install Dependencies
-bash
-Copy code
+
+4. Install Dependencies
+
+Install the required Python packages using requirements.txt:
+
 pip install -r requirements.txt
+
+
 Dependencies include:
 
-streamlit → Web UI
+streamlit → for building the web interface.
 
-groq → LLM API
+groq → for accessing the LLM (Groq API wrapper).
 
-langgraph → Agent orchestration
+python-dotenv → for managing API keys securely.
 
-pandas → Transcript handling
+pandas → for working with datasets in questions.
 
-4️⃣ Setup API Key
-You need a Groq API key.
+regex → for formula validation.
 
-Create a file named .env in the project root.
+5. Configure API Keys
 
-Add your key:
+Create a .env file in the project root:
 
-ini
-Copy code
-GROQ_API_KEY=your_api_key_here
-5️⃣ Run the App
-bash
-Copy code
+GROQ_API_KEY=your_groq_api_key_here
+MODEL_NAME=llama-3.1-8b-instant
+INTERVIEWER_NAME=YourName
+
+
+Replace your_groq_api_key_here with your actual Groq API key.
+
+You can customize the interviewer’s name with INTERVIEWER_NAME.
+
+6. Run the Project
+
+Run the Streamlit web app:
+
 streamlit run app.py
-This will open the app in your default browser (usually at http://localhost:8501).
 
-6️⃣ Using the App
-Enter your name.
 
-Select a difficulty level (Beginner / Intermediate / Expert).
+Your default browser will open with the interview interface.
 
-Answer Excel-related formula questions (or skip).
+Enter your name and select a skill level: Beginner, Intermediate, or Advanced.
 
-At the end:
+7. How to Use the Interview Interface
 
-See your total score.
+Start Interview
+Enter your name and select your skill level. Click Start Interview.
 
-Get personalized feedback.
+Answer Questions
 
-Download your transcript (CSV/JSON).
+Questions will appear one by one.
 
-7️⃣ Example Transcript Output
-json
-Copy code
-[
-  {
-    "question": "Write a formula to calculate the average of column B.",
-    "answer": "=AVERAGE(B:B)",
-    "score": 1,
-    "feedback": "Correct! You used the AVERAGE formula properly.",
-    "solution": "=AVERAGE(B:B)"
-  }
-]
+You can type your formula or explanation in the answer box.
+
+Click Submit Answer to record your response.
+
+If you want to skip, click Skip Question.
+
+Dynamic Question Flow
+
+The agent adjusts the difficulty of the next question based on your previous answer.
+
+Beginner → Intermediate → Advanced progression is adaptive.
+
+Feedback & Transcript
+
+After completing all questions, you will receive a detailed report.
+
+The report includes:
+
+Candidate answers
+
+Correct solutions
+
+Scores
+
+Feedback
+
+You can download your transcript in JSON format.
+
+8. File Structure Overview
+excel-mock-interviewer/
+├── app.py                  # Main Streamlit app
+├── config.py               # API keys & settings
+├── agents/                 # Agentic AI components
+│   ├── interviewer_agent.py
+│   ├── evaluator_agent.py
+│   └── feedback_agent.py
+├── utils/                  # Helpers like API wrappers
+│   └── groq_client.py
+└── data/
+    ├── transcripts/        # Stores interview transcripts
+    └── candidates.json     # Optional candidate profiles
+
+9. Notes & Tips
+
+Ensure internet connection for LLM API calls.
+
+Make sure your Groq API key is valid.
+
+Do not hardcode the candidate name; the interface asks for it each time.
+
+You can modify the question bank and scoring logic by updating the agents folder.
+
+10. Troubleshooting
+
+Streamlit Errors → Make sure you installed all dependencies and activated the virtual environment.
+
+API Authentication Errors → Check .env for correct API key.
+
+JSON Transcript Issues → Ensure data/transcripts folder exists.
